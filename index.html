@@ -1,1 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Texas land due diligence: the 4-tier interactive land checklist system for buyers and agents, plus a homeowner guide to protect your property title.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🛡️</text></svg>">
+    <title>Property Safe Guide | Texas Land Checklist & Homeowner Title Protection</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            700: '#24467A',
+                            800: '#1B365D',
+                            900: '#0F2342',
+                        },
+                        sand: {
+                            50: '#FAF9F5',
+                            100: '#F7F5F0',
+                            200: '#EFECE6',
+                            300: '#E3DEC3',
+                        },
+                        maroon: {
+                            50: '#FDF2F2',
+                            100: '#FBE4E4',
+                            700: '#A01212',
+                            800: '#8B0000',
+                            900: '#6B0000',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-padding-top: 5rem; }
+        :focus-visible { outline: 3px solid #F59E0B; outline-offset: 2px; box-shadow: 0 0 0 5px #0F2342; }
+        .accordion-content { visibility: hidden; }
+        .accordion-content.active { visibility: visible; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .accordion-content.active {
+            max-height: 1200px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-sand-100 text-slate-800 font-sans antialiased selection:bg-maroon-800 selection:text-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-navy-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">Skip to main content</a>
 
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-navy-900 text-white shadow-xl border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Badge -->
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="flex items-center space-x-3 group">
+                        <div class="w-10 h-10 rounded-lg bg-maroon-800 flex items-center justify-center text-white shadow-md group-hover:bg-maroon-700 transition-colors">
+                            <i class="fa-solid font-bold fa-shield-halved text-xl" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-extrabold tracking-tight block uppercase text-white font-sans">PROPERTY SAFE GUIDE</span>
+                            <span class="text-xs text-sand-300 font-medium tracking-wide flex items-center">
+                                <i class="fa-solid fa-location-dot text-maroon-700 mr-1" aria-hidden="true"></i> Dallas, TX
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav aria-label="Main" class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#land-checklist" class="hover:text-sand-300 transition-colors">Land Checklist System</a>
+                    <a href="#4-tier-audit" class="hover:text-sand-300 transition-colors">4-Tier Audit</a>
+                    <a href="#homeowner-guide" class="hover:text-sand-300 transition-colors">Homeowner Guide</a>
+                    <a href="#carl-anthony" class="hover:text-sand-300 transition-colors">Meet Carl Anthony</a>
+                    <a href="#pricing" class="hover:text-sand-300 transition-colors">Pricing</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md text-sand-200 hover:text-white hover:bg-navy-800">
+                        <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" role="navigation" aria-label="Mobile menu" class="hidden md:hidden bg-navy-900 border-b border-navy-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#land-checklist" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-navy-800">Land Checklist System</a>
+            <a href="#4-tier-audit" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-navy-800">4-Tier Audit</a>
+            <a href="#homeowner-guide" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-navy-800">Homeowner Guide</a>
+            <a href="#carl-anthony" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-navy-800">Meet Carl Anthony</a>
+            <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-navy-800">Pricing</a>
+            <a href="https://payhip.com/buy?link=MrP2C" class="block w-full text-center bg-maroon-800 text-white py-3 rounded-lg font-bold mt-4">Get Land Checklist ($117 Launch Special)</a>
+        </div>
+    </header>
+
+    <main id="main">
+
+    <!-- HERO SECTION -->
+    <section id="land-checklist" class="relative bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900 text-white py-16 lg:py-24 overflow-hidden border-b border-navy-800">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-maroon-800/80 text-sand-100 text-xs font-bold px-3 py-1.5 rounded-full border border-maroon-700 shadow-sm uppercase tracking-wider">
+                        <i class="fa-solid fa-tag text-amber-300" aria-hidden="true"></i>
+                        <span>Launch Special • Save $50 Today</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white font-serif">
+                        Don’t Buy Texas Acreage Until You Complete This <span class="text-amber-400 underline decoration-maroon-800 decoration-4">4-Tier Audit.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-sand-200 leading-relaxed font-light">
+                        The ultimate Texas Interactive Land Checklist System built specifically for <strong class="text-white font-semibold">land buyers, exurban Realtors, brokers, and investors</strong> to eliminate costly land traps before putting earnest money on the line.
+                    </p>
+
+                    <div class="bg-navy-900/90 border border-navy-800 rounded-xl p-5 text-left text-sm space-y-3 shadow-inner">
+                        <p class="text-xs font-bold text-sand-300 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-shield-virus text-maroon-700" aria-hidden="true"></i> Avoid $10,000+ Texas Land Pitfalls:
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-2 text-sand-100">
+                            <div class="flex items-start space-x-2">
+                                <i class="fa-solid fa-circle-xmark text-maroon-700 mt-1 flex-shrink-0" aria-hidden="true"></i>
+                                <span>Severed Mineral Estates & Drilling Rights</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fa-solid fa-circle-xmark text-maroon-700 mt-1 flex-shrink-0" aria-hidden="true"></i>
+                                <span>Unrecorded Easements & Landlocked Parcels</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fa-solid fa-circle-xmark text-maroon-700 mt-1 flex-shrink-0" aria-hidden="true"></i>
+                                <span>$15,000+ Electric & Water Extension Costs</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <i class="fa-solid fa-circle-xmark text-maroon-700 mt-1 flex-shrink-0" aria-hidden="true"></i>
+                                <span>3-Year Ag Rollback Taxes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#4-tier-audit" class="w-full sm:w-auto bg-sand-100 hover:bg-white text-navy-900 px-8 py-4 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-200 text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-list-check text-maroon-800" aria-hidden="true"></i>
+                            <span>Preview 4-Tier Audit System</span>
+                        </a>
+                        <a href="https://payhip.com/buy?link=MrP2C" class="w-full sm:w-auto bg-maroon-800 hover:bg-maroon-700 text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-200 border border-maroon-700 text-center flex items-center justify-center gap-2">
+                            <span>Get Checklist System ($117)</span>
+                            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <p class="text-xs text-sand-300 italic">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mr-1" aria-hidden="true"></i> Launch Offer: $117 (Regular $167) • Google Sheets & Excel download.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-sand-50 text-slate-800 rounded-2xl p-6 shadow-2xl border-4 border-navy-800 relative">
+                        <div class="absolute -top-4 -right-4 bg-maroon-800 text-white font-extrabold text-xs px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+                            Interactive System
+                        </div>
+                        
+                        <div class="flex items-center justify-between border-b border-sand-200 pb-4 mb-4">
+                            <div>
+                                <h2 class="font-bold text-navy-900 text-lg">Texas Land Audit Suite</h2>
+                                <p class="text-xs text-slate-600">Auto-Calculating Risk Assessor v4.2</p>
+                            </div>
+                            <span class="text-xs font-mono bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-md">
+                                READY TO USE
+                            </span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-sand-200 shadow-sm flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-navy-800 text-white flex items-center justify-center font-bold">1</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Desk Screen Audit</p>
+                                        <p class="text-slate-600 text-xs">GIS, FEMA, Soils, CAD</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">100% Verified</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-sand-200 shadow-sm flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-navy-800 text-white flex items-center justify-center font-bold">2</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">County Records Pull</p>
+                                        <p class="text-slate-600 text-xs">Mineral, Easements, Ag Tax</p>
+                                    </div>
+                                </div>
+                                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">Action Required</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-sand-200 shadow-sm flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-navy-800 text-white flex items-center justify-center font-bold">3</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Ground Truth Check</p>
+                                        <p class="text-slate-600 text-xs">Power Pole Distance, Wells</p>
+                                    </div>
+                                </div>
+                                <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">Pending Field</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-sand-200 shadow-sm flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-navy-800 text-white flex items-center justify-center font-bold">4</div>
+                                    <div>
+                                        <p class="font-bold text-slate-800">Professional Contingency</p>
+                                        <p class="text-slate-600 text-xs">Survey, Perc Test, Title</p>
+                                    </div>
+                                </div>
+                                <span class="bg-maroon-100 text-maroon-800 text-xs font-bold px-2 py-0.5 rounded">Red Flag Alert</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-sand-200">
+                            <div class="flex justify-between items-center mb-1.5 text-xs font-bold">
+                                <span>Estimated Utility & Tax Risk:</span>
+                                <span class="text-maroon-800 font-extrabold">$18,500</span>
+                            </div>
+                            <div aria-hidden="true" class="w-full bg-sand-200 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-maroon-800 h-2.5 rounded-full" style="width: 72%"></div>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-2 italic">
+                                *Automatically factors utility extension distances & Ag rollback tax calculations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: 4-TIER DUE DILIGENCE PREVIEW -->
+    <section id="4-tier-audit" class="py-20 bg-sand-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-maroon-800 font-extrabold text-sm uppercase tracking-widest block mb-2">Architected For Texas Real Estate</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 font-serif">
+                    The 4-Tier Texas Due Diligence System
+                </h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                    Click any tier below to explore the exact checks, verified data sources, and critical red flags built directly into our interactive system.
+                </p>
+            </div>
+
+            <!-- Accordion Container -->
+            <div class="space-y-4">
+                <!-- TIER 1 -->
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md">
+                    <h3 class="m-0"><button type="button" id="tier-1-btn" aria-expanded="false" aria-controls="tier-1" class="accordion-header w-full text-left px-6 py-5 bg-navy-900 text-white flex items-center justify-between" onclick="toggleAccordion('tier-1')">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-lg bg-maroon-800 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">T1</span>
+                            <div>
+                                <span class="block text-lg font-bold">Tier 1: Desktop Screening & Mapping</span>
+                                <span class="block text-xs text-sand-300">GIS Mapping, FEMA Flood Zones, CAD Boundaries, Soil Specs</span>
+                            </div>
+                        </div>
+                        <i id="icon-tier-1" class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i>
+                    </button></h3>
+
+                    <div id="tier-1" role="region" aria-labelledby="tier-1-btn" class="accordion-content px-6 bg-white">
+                        <div class="py-6 space-y-4 text-sm text-slate-700">
+                            <p class="font-medium text-navy-900">
+                                Performed before spending fuel or booking trips to the acreage. Establishes baseline geographical and legal boundaries.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-sand-50 p-4 rounded-lg border border-sand-200">
+                                    <h4 class="font-bold text-navy-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-square-check text-emerald-600" aria-hidden="true"></i> Primary Verification Checklist:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-slate-600">
+                                        <li>FEMA Floodplain Overlay (Zone X vs Zone AE/A)</li>
+                                        <li>County Appraisal District (CAD) GIS Boundary overlay</li>
+                                        <li>Web Soil Survey (USDA septic suitability rating)</li>
+                                        <li>Texas Water Development Board (TWDB) aquifer maps</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-maroon-800/10 p-4 rounded-lg border border-maroon-800/30">
+                                    <h4 class="font-bold text-maroon-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-triangle-exclamation text-maroon-800" aria-hidden="true"></i> Crimson Red Flag Alerts:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-maroon-900 font-medium">
+                                        <li>More than 30% of buildable envelope in 100-year flood zone</li>
+                                        <li>USDA "Very Limited" soil rating for conventional septic</li>
+                                        <li>CAD boundary mismatch exceeding 15 feet along access road</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 2 -->
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md">
+                    <h3 class="m-0"><button type="button" id="tier-2-btn" aria-expanded="false" aria-controls="tier-2" class="accordion-header w-full text-left px-6 py-5 bg-navy-900 text-white flex items-center justify-between" onclick="toggleAccordion('tier-2')">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-lg bg-maroon-800 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">T2</span>
+                            <div>
+                                <span class="block text-lg font-bold">Tier 2: County Records Pull & Title Deep Dive</span>
+                                <span class="block text-xs text-sand-300">Recorded Deed Easements, Mineral Estate, Ag Exemption Tax</span>
+                            </div>
+                        </div>
+                        <i id="icon-tier-2" class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i>
+                    </button></h3>
+
+                    <div id="tier-2" role="region" aria-labelledby="tier-2-btn" class="accordion-content px-6 bg-white">
+                        <div class="py-6 space-y-4 text-sm text-slate-700">
+                            <p class="font-medium text-navy-900">
+                                Review official Texas County Clerk filings to verify ownership chains, encumbrances, and tax liabilities.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-sand-50 p-4 rounded-lg border border-sand-200">
+                                    <h4 class="font-bold text-navy-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-square-check text-emerald-600" aria-hidden="true"></i> Primary Verification Checklist:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-slate-600">
+                                        <li>Mineral Reservation Clauses (Severed mineral rights check)</li>
+                                        <li>Pipeline & Electrical Ingress/Egress Easement documents</li>
+                                        <li>Agricultural 1-D-1 Valuation status and history</li>
+                                        <li>Access deed verification (Deeded legal access guarantee)</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-maroon-800/10 p-4 rounded-lg border border-maroon-800/30">
+                                    <h4 class="font-bold text-maroon-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-triangle-exclamation text-maroon-800" aria-hidden="true"></i> Crimson Red Flag Alerts:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-maroon-900 font-medium">
+                                        <li>100% Mineral Estate severance with surface lease waivers missing</li>
+                                        <li>Pending 3-year Ag Valuation Rollback Tax penalty ($5,000–$25,000)</li>
+                                        <li>Access via unrecorded prescriptive easement or verbal agreement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 3 -->
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md">
+                    <h3 class="m-0"><button type="button" id="tier-3-btn" aria-expanded="false" aria-controls="tier-3" class="accordion-header w-full text-left px-6 py-5 bg-navy-900 text-white flex items-center justify-between" onclick="toggleAccordion('tier-3')">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-lg bg-maroon-800 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">T3</span>
+                            <div>
+                                <span class="block text-lg font-bold">Tier 3: Ground Truth On-Site Verification</span>
+                                <span class="block text-xs text-sand-300">Boundary Walk, Power Pole Distance, Cell Signal, Water Wells</span>
+                            </div>
+                        </div>
+                        <i id="icon-tier-3" class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i>
+                    </button></h3>
+
+                    <div id="tier-3" role="region" aria-labelledby="tier-3-btn" class="accordion-content px-6 bg-white">
+                        <div class="py-6 space-y-4 text-sm text-slate-700">
+                            <p class="font-medium text-navy-900">
+                                On-site physical inspection checklist to measure physical utilities, topography, and real-world conditions.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-sand-50 p-4 rounded-lg border border-sand-200">
+                                    <h4 class="font-bold text-navy-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-square-check text-emerald-600" aria-hidden="true"></i> Primary Verification Checklist:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-slate-600">
+                                        <li>Measure distance from build site to nearest electric pole</li>
+                                        <li>Neighboring well depth & flow logs (TWDB database cross-reference)</li>
+                                        <li>Cellular carrier strength test at primary build envelope</li>
+                                        <li>Fence line vs monument marker physical verification</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-maroon-800/10 p-4 rounded-lg border border-maroon-800/30">
+                                    <h4 class="font-bold text-maroon-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-triangle-exclamation text-maroon-800" aria-hidden="true"></i> Crimson Red Flag Alerts:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-maroon-900 font-medium">
+                                        <li>Electric pole distance > 500 ft (Electric Co-op drop fee: $10k–$25k)</li>
+                                        <li>Neighboring well depths exceeding 400 ft with low GPM flow</li>
+                                        <li>Unrecorded encroachments or active pipelines visible on-site</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 4 -->
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md">
+                    <h3 class="m-0"><button type="button" id="tier-4-btn" aria-expanded="false" aria-controls="tier-4" class="accordion-header w-full text-left px-6 py-5 bg-navy-900 text-white flex items-center justify-between" onclick="toggleAccordion('tier-4')">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-10 h-10 rounded-lg bg-maroon-800 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">T4</span>
+                            <div>
+                                <span class="block text-lg font-bold">Tier 4: Professional Contingencies & Contracts</span>
+                                <span class="block text-xs text-sand-300">Perc Tests, Boundary Surveys, Legal Title Review Schedule</span>
+                            </div>
+                        </div>
+                        <i id="icon-tier-4" class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i>
+                    </button></h3>
+
+                    <div id="tier-4" role="region" aria-labelledby="tier-4-btn" class="accordion-content px-6 bg-white">
+                        <div class="py-6 space-y-4 text-sm text-slate-700">
+                            <p class="font-medium text-navy-900">
+                                Mandatory TREC contract addenda and formal engineering/survey contingencies before earnest money goes non-refundable.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-sand-50 p-4 rounded-lg border border-sand-200">
+                                    <h4 class="font-bold text-navy-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-square-check text-emerald-600" aria-hidden="true"></i> Primary Verification Checklist:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-slate-600">
+                                        <li>TREC Unimproved Property Contract special provisions rider</li>
+                                        <li>Licensed OSSF Site Evaluator septic percolation test</li>
+                                        <li>RPLS Category 1A Land Title Survey with corner pins set</li>
+                                        <li>Title Commitment Schedule B exception clause review</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-maroon-800/10 p-4 rounded-lg border border-maroon-800/30">
+                                    <h4 class="font-bold text-maroon-800 mb-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-triangle-exclamation text-maroon-800" aria-hidden="true"></i> Crimson Red Flag Alerts:
+                                    </h4>
+                                    <ul class="list-disc list-inside space-y-1.5 text-xs text-maroon-900 font-medium">
+                                        <li>Seller refusal to allow 30-day feasibility study period</li>
+                                        <li>Title commitment excluding standard survey exception coverage</li>
+                                        <li>OSSF Perc test requiring engineered aerobic system ($12k+)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECONDARY PRODUCT SECTION -->
+    <section id="homeowner-guide" class="py-20 bg-navy-900 text-white relative overflow-hidden border-t border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-sand-200 text-navy-900 text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                        <i class="fa-solid fa-house-shield text-maroon-800" aria-hidden="true"></i>
+                        <span>Secondary Product Offering</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-serif leading-tight">
+                        Already Own Property in Texas? <br/>
+                        <span class="text-amber-400">Secure Your Title & Audit County Records.</span>
+                    </h2>
+
+                    <p class="text-sand-200 text-base sm:text-lg leading-relaxed font-light">
+                        Deed fraud and unauthorized mechanic's liens are on the rise across major Texas counties. The <strong class="text-white">Property Safe Homeowner Guide</strong> gives existing Texas property owners step-by-step instructions to verify recorded documents and set up zero-cost official county alerts.
+                    </p>
+
+                    <div class="grid sm:grid-cols-3 gap-4 pt-2">
+                        <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-maroon-800 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-building-columns text-sm" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-white">Direct County Clerk Directory</h3>
+                            <p class="text-xs text-sand-300">Direct portal links for all 254 Texas County Clerk public records systems.</p>
+                        </div>
+
+                        <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-maroon-800 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-bell text-sm" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-white">Free Title Alert Setup</h3>
+                            <p class="text-xs text-sand-300">Step-by-step walkthrough to activate free county deed monitoring.</p>
+                        </div>
+
+                        <div class="bg-navy-800 p-4 rounded-xl border border-navy-700 space-y-2">
+                            <div class="w-8 h-8 rounded-lg bg-maroon-800 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-file-contract text-sm" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-white">Deed Audit Checklist</h3>
+                            <p class="text-xs text-sand-300">Identify unmonitored liens, errors, or fraudulent filings on your deed.</p>
+                        </div>
+                    </div>
+                </div>
+     
+                <!-- Product Preview Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-sand-50 text-slate-800 rounded-2xl p-6 shadow-2xl border-2 border-sand-300 space-y-4">
+                        <div class="flex items-center justify-between border-b border-sand-200 pb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-lg bg-navy-900 text-white flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-navy-900">Texas Property Protection</h3>
+                                    <p class="text-xs text-slate-600">Homeowner Records Manual</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-maroon-800 bg-maroon-100 px-2.5 py-1 rounded-full">$27 ONE-TIME</span>
+                        </div>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="p-3 bg-white rounded-lg border border-sand-200 flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5" aria-hidden="true"></i>
+                                <div>
+                                    <strong class="text-slate-800 block">All of the Major counties in Texas</strong>
+                                    <span class="text-slate-600">Includes direct URL parameters for Texas land registry systems.</span>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-white rounded-lg border border-sand-200 flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5" aria-hidden="true"></i>
+                                <div>
+                                    <strong class="text-slate-800 block">Homestead Exemption Safeguard Audit</strong>
+                                    <span class="text-slate-600">Ensure your residence Homestead status is active and protected.</span>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-white rounded-lg border border-sand-200 flex items-start space-x-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5" aria-hidden="true"></i>
+                                <div>
+                                    <strong class="text-slate-800 block">Mechanic's Lien Defense Protocol</strong>
+                                    <span class="text-slate-600">Clear step-by-step procedure if a contractor files an illegal lien.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-navy-900 text-sand-200 p-3 rounded-lg text-xs text-center font-mono">
+                            <i class="fa-solid fa-lock text-emerald-400 mr-1" aria-hidden="true"></i> Instant Digital PDF Download
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: LOCAL TRUST SECTION -->
+    <section id="carl-anthony" class="py-20 bg-sand-200 border-b border-sand-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-xl border border-sand-300">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-4 text-center">
+                        <div aria-hidden="true" class="w-36 h-36 mx-auto rounded-full bg-navy-900 text-sand-100 flex items-center justify-center text-4xl font-extrabold border-4 border-maroon-800 shadow-xl font-serif">
+                            CA
+                        </div>
+                        <h3 class="mt-4 text-xl font-bold text-navy-900">Carl Anthony</h3>
+                        <p class="text-xs text-maroon-800 font-bold uppercase tracking-wider">Dallas, Texas</p>
+                        <span class="inline-block mt-2 bg-sand-100 text-slate-600 text-xs px-3 py-1 rounded-full border border-sand-300">
+                            Founder & System Architect
+                        </span>
+                    </div>
+
+                    <div class="md:col-span-8 space-y-4">
+                        <div class="inline-flex items-center space-x-2 text-xs font-bold text-navy-800 uppercase tracking-widest">
+                            <i class="fa-solid fa-location-dot text-maroon-800" aria-hidden="true"></i>
+                            <span>Built Right Here in Dallas, Texas</span>
+                        </div>
+
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900 font-serif">
+                            "Texas property transactions shouldn't require $300/hr legal fees for basic due diligence."
+                        </h2>
+
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                            Hey, I'm Carl Anthony. Living and working right here in Dallas, I watched family members and fellow Texans fall into preventable land traps—buying acreage with severed mineral rights, paying tens of thousands in unexpected utility extension fees, or discovering unrecorded easements after closing.
+                        </p>
+
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                            I built the <strong class="text-navy-900">Texas Interactive Land Checklist System</strong> and <strong class="text-navy-900">Property Safe Guide</strong> to give buyers, agents, and homeowners direct, transparent control over their property diligence without paying inflated retainer fees for standard boilerplate templates.
+                        </p>
+
+                        <div class="pt-2 flex items-center space-x-6 text-xs font-semibold text-slate-600">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>
+                                <span>100% Independent</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>
+                                <span>Texas Specific</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>
+                                <span>Lifetime Updates</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: PRICING & OFFER SECTION -->
+    <section id="pricing" class="py-20 bg-sand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-maroon-800 font-extrabold text-sm uppercase tracking-widest block mb-2">Straightforward Texas Pricing</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 font-serif">
+                    Choose Your Due Diligence Package
+                </h2>
+                <p class="text-slate-600 mt-3 text-base">
+                    One-time payment. Instant download. No subscription fees or hidden costs.
+                </p>
+            </div>
+
+            <!-- Side-by-Side Pricing Cards with Correct Borders -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- LEFT CARD: $117 Land Checklist System -->
+                <div class="bg-white rounded-2xl shadow-xl border-2 border-navy-800 flex flex-col overflow-hidden hover:shadow-2xl transition-shadow">
+                    <div class="p-8 flex-grow">
+                        <span class="text-xs font-bold uppercase tracking-wider text-maroon-800 bg-maroon-50 px-3 py-1 rounded-full">Comprehensive System</span>
+                        <h3 class="text-xl font-bold text-navy-900 mt-4 mb-2">Texas Interactive Land Checklist System</h3>
+                        <p class="text-sm text-slate-600 mb-6">Full digital toolset and deep-dive audits for maximum asset protection.</p>
+                    </div>
+                    <div class="p-8 pt-0 bg-sand-50 border-t border-sand-200">
+                        <div class="pt-4">
+                            <a href="https://payhip.com/buy?link=MrP2C" class="block w-full text-center bg-maroon-800 text-white py-3 rounded-lg font-bold mt-4">
+                                Get Land Checklist System ($117)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT CARD: $27 Homeowner Guide -->
+                <div class="bg-white rounded-2xl shadow-xl border-2 border-navy-800 flex flex-col overflow-hidden hover:shadow-2xl transition-shadow">
+                    <div class="p-8 flex-grow">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full">Essential Guide</span>
+                        <h3 class="text-xl font-bold text-navy-900 mt-4 mb-2">Property Safe Homeowner Guide</h3>
+                        <p class="text-sm text-slate-600 mb-6">Complete property security framework and step-by-step audit tools.</p>
+                    </div>
+                    <div class="p-8 pt-0 bg-sand-50 border-t border-sand-200">
+                        <div class="pt-4">
+                            <a href="https://payhip.com/buy?link=8X4UF" class="block w-full text-center bg-gray-700 text-white py-3 rounded-lg font-bold mt-4">
+                                Get Homeowner Guide ($27)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 bg-sand-200 border-t border-sand-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-maroon-800 font-extrabold text-sm uppercase tracking-widest block mb-2">Got Questions?</span>
+                <h2 class="text-3xl font-extrabold text-navy-900 font-serif">Frequently Asked Questions</h2>
+            </div>
+            <div class="flex justify-center gap-2 mb-8" role="group" aria-label="Choose FAQ style"><button type="button" id="faq-b-acc" aria-pressed="true" class="px-4 py-2 rounded-lg font-bold text-sm bg-navy-900 text-white">Tap to expand</button><button type="button" id="faq-b-card" aria-pressed="false" class="px-4 py-2 rounded-lg font-bold text-sm bg-white text-navy-900 border-2 border-navy-800">Show all answers</button></div>
+            <div class="space-y-4" id="faq-acc">
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md"><h3 class="m-0"><button type="button" class="faq-btn w-full text-left px-6 py-4 bg-navy-900 text-white flex items-center justify-between gap-4" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn"><span class="font-bold">Is this checklist specific to Texas land laws?</span><i class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i></button></h3><div id="faq-1" role="region" aria-labelledby="faq-1-btn" class="hidden px-6 py-5 text-sm text-slate-600">Yes. Unlike generic real estate checklists, this system is built around Texas-specific property realities including 1-D-1 Ag Valuations, Groundwater Conservation Districts (GCDs), TREC contracts, Texas County Clerk record formats, and Texas Co-op utility rules.</div></div>
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md"><h3 class="m-0"><button type="button" class="faq-btn w-full text-left px-6 py-4 bg-navy-900 text-white flex items-center justify-between gap-4" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn"><span class="font-bold">What format do I receive after ordering?</span><i class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i></button></h3><div id="faq-2" role="region" aria-labelledby="faq-2-btn" class="hidden px-6 py-5 text-sm text-slate-600">You get instant access to an interactive Google Sheet. After choosing Make a Copy to get the interactive spreadsheet, if you prefer Excel, click File, then Download, then Microsoft Excel (.xlsx).</div></div>
+                <div class="border-2 border-navy-800 rounded-xl bg-white overflow-hidden shadow-md"><h3 class="m-0"><button type="button" class="faq-btn w-full text-left px-6 py-4 bg-navy-900 text-white flex items-center justify-between gap-4" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn"><span class="font-bold">What is an Ag Rollback Tax and why is it in the audit?</span><i class="fa-solid fa-chevron-down text-sand-300 transition-transform duration-200" aria-hidden="true"></i></button></h3><div id="faq-3" role="region" aria-labelledby="faq-3-btn" class="hidden px-6 py-5 text-sm text-slate-600">If land taking advantage of an Agricultural Valuation (1-D-1) changes use (e.g., from cattle grazing to residential building), Texas counties assess a rollback tax penalty equal to the tax savings for the preceding three years plus interest. Our system auto-calculates this potential penalty before you buy.</div></div>
+            </div>
+            <div class="space-y-4 hidden" id="faq-cards">
+                <div class="bg-white p-6 rounded-xl border border-sand-300 shadow-sm"><h3 class="font-bold text-navy-900 text-base">Is this checklist specific to Texas land laws?</h3><p class="text-slate-600 text-sm mt-2">Yes. Unlike generic real estate checklists, this system is built around Texas-specific property realities including 1-D-1 Ag Valuations, Groundwater Conservation Districts (GCDs), TREC contracts, Texas County Clerk record formats, and Texas Co-op utility rules.</p></div>
+                <div class="bg-white p-6 rounded-xl border border-sand-300 shadow-sm"><h3 class="font-bold text-navy-900 text-base">What format do I receive after ordering?</h3><p class="text-slate-600 text-sm mt-2">You get instant access to an interactive Google Sheet. After choosing Make a Copy to get the interactive spreadsheet, if you prefer Excel, click File, then Download, then Microsoft Excel (.xlsx).</p></div>
+                <div class="bg-white p-6 rounded-xl border border-sand-300 shadow-sm"><h3 class="font-bold text-navy-900 text-base">What is an Ag Rollback Tax and why is it in the audit?</h3><p class="text-slate-600 text-sm mt-2">If land taking advantage of an Agricultural Valuation (1-D-1) changes use (e.g., from cattle grazing to residential building), Texas counties assess a rollback tax penalty equal to the tax savings for the preceding three years plus interest. Our system auto-calculates this potential penalty before you buy.</p></div>
+            </div>
+        <script>
+        document.querySelectorAll('#faq .faq-btn').forEach(function (b) {
+            b.addEventListener('click', function () {
+                var open = b.getAttribute('aria-expanded') === 'true';
+                b.setAttribute('aria-expanded', String(!open));
+                document.getElementById(b.getAttribute('aria-controls')).classList.toggle('hidden', open);
+                b.querySelector('i').style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+        var ba = document.getElementById('faq-b-acc'), bc = document.getElementById('faq-b-card');
+        var setView = function (acc) {
+            document.getElementById('faq-acc').classList.toggle('hidden', !acc);
+            document.getElementById('faq-cards').classList.toggle('hidden', acc);
+            ba.setAttribute('aria-pressed', String(acc));
+            bc.setAttribute('aria-pressed', String(!acc));
+            ba.className = 'px-4 py-2 rounded-lg font-bold text-sm ' + (acc ? 'bg-navy-900 text-white' : 'bg-white text-navy-900 border-2 border-navy-800');
+            bc.className = 'px-4 py-2 rounded-lg font-bold text-sm ' + (acc ? 'bg-white text-navy-900 border-2 border-navy-800' : 'bg-navy-900 text-white');
+        };
+        ba.addEventListener('click', function () { setView(true); });
+        bc.addEventListener('click', function () { setView(false); });
+    </script>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-sand-300 py-12 border-t border-navy-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center space-x-2 font-bold text-white uppercase text-base">
+                <i class="fa-solid fa-shield-halved text-maroon-800" aria-hidden="true"></i>
+                <span>PROPERTY SAFE GUIDE</span>
+            </div>
+            <p class="text-xs text-sand-300 max-w-xl mx-auto">
+                Disclaimer: Property Safe Guide and the Texas Interactive Land Checklist System are educational and informational tools designed by Property Safe Guide. They do not constitute legal or formal real estate legal representation.
+            </p>
+            <p class="text-sm text-sand-200">
+                Questions? Email <a href="mailto:support@propertysafeguide.com" class="underline hover:text-white transition-colors">support@propertysafeguide.com</a> or call <a href="tel:+14692327791" class="underline hover:text-white transition-colors">469-232-7791</a> (Mon–Fri, 9–5 Central)
+            </p>
+            <div class="flex items-center justify-center space-x-4 text-xs text-sand-300 pt-2">
+                <a href="accessibility.html" class="hover:underline hover:text-white transition-colors">Accessibility Statement</a>
+            </div>
+            <p class="text-xs text-slate-400">
+                Property Safe Guide © 2026 (System V2) | Developed locally in Dallas, TX. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            this.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(function(a){
+            a.addEventListener('click', function(){ document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false'); });
+        });
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if(item.id !== id) {
+                    item.classList.remove('active');
+                    const otherIcon = document.getElementById('icon-' + item.id);
+                    if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+            document.querySelectorAll('.accordion-header').forEach(function (b) {
+                b.setAttribute('aria-expanded', String(document.getElementById(b.getAttribute('aria-controls')).classList.contains('active')));
+            });
+        }
+    </script>
+</body>
+</html>
