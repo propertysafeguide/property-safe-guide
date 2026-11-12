@@ -779,5 +779,9 @@
             });
         }
     </script>
+<!-- No-copy: stops casual highlighting/copying. Phone, email and form fields stay copyable. -->
+<style>body{-webkit-user-select:none;user-select:none}a[href^="mailto:"],a[href^="tel:"],input,textarea{-webkit-user-select:text;user-select:text}#psg-nc{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b2545;color:#fff;padding:10px 18px;border-radius:8px;font:15px Arial,sans-serif;z-index:9999;display:none}</style>
+<div id="psg-nc" role="status">Content is protected. &copy; Property Safe Guide</div>
+<script>(function(){var t,n=document.getElementById('psg-nc');function ok(e){var x=e.target;if(x&&x.nodeType!==1)x=x.parentElement;return x&&x.closest&&x.closest('a[href^="mailto:"],a[href^="tel:"],input,textarea')}function show(){n.style.display='block';clearTimeout(t);t=setTimeout(function(){n.style.display='none'},2000)}['copy','cut','contextmenu','dragstart'].forEach(function(ev){document.addEventListener(ev,function(e){if(!ok(e)){e.preventDefault();show()}})})})();</script>
 </body>
 </html>
