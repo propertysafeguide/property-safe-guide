@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://propertysafeguide.com/sitemap.xml
